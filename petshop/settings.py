@@ -80,23 +80,24 @@ WSGI_APPLICATION = 'petshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'x03z57x50jrmjyyd',
-       'USER': 'xdlzqrw4pzjijzwn',
-       'PASSWORD': 'kartdp8e8287c6ak',
-       'HOST': 'dno6xji1n8fm828n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
-       'PORT': '3306',
-       'init_command':"SET sql_mode='STRICT_TRANS_TABLES'",
-   },
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'x03z57x50jrmjyyd',
+        'USER': 'xdlzqrw4pzjijzwn',
+        'PASSWORD': 'kartdp8e8287c6ak',
+        # Or an IP Address that your DB is hosted on
+        'HOST': 'dno6xji1n8fm828n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    },
 }
 
-#DATABASES = {
+# DATABASES = {
 #   'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #    }
-#}
+# }
 
 
 # Password validation
@@ -136,28 +137,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (BASE_DIR,'static')
-MEDIA_URL= '/media/'
-MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+STATICFILES_DIRS = (BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:4200",
+    "https://apirestshoop.herokuapp.com/servicios/productos/",
+    "https://apirestshoop.herokuapp.com/servicios/categorias/",
 ]
 
 #CORS_ORIGIN_ALLOW_ALL = True
 
 #CORS_ALLOW_CREDENTIALS = True
 
-#CORS_ALLOW_METHODS = [
+# CORS_ALLOW_METHODS = [
 #    'DELETE',
 #    'GET',
 #    'OPTIONS',
 #    'PATCH',
 #    'POST',
 #    'PUT',
-#]
+# ]
 
-#CORS_ALLOW_HEADERS = [
+# CORS_ALLOW_HEADERS = [
 #    'accept',
 #    'accept-encoding',
 #    'authorization',
@@ -167,4 +169,4 @@ CORS_ORIGIN_WHITELIST = [
 #    'user-agent',
 #    'x-csrftoken',
 #    'x-requested-with',
-#]
+# ]
