@@ -88,7 +88,9 @@ DATABASES = {
         # Or an IP Address that your DB is hosted on
         'HOST': 'dno6xji1n8fm828n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         'PORT': '3306',
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_ALL_TABLES'",
+        },
     },
 }
 
