@@ -141,10 +141,7 @@ STATICFILES_DIRS = (BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CORS_ORIGIN_WHITELIST = [
-    "https://apirestshoop.herokuapp.com/servicios/productos/",
-    "https://apirestshoop.herokuapp.com/servicios/categorias/",
-]
+CORS_ORIGIN_WHITELIST = []
 
 CORS_ORIGIN_ALLOW_ALL = True
 
