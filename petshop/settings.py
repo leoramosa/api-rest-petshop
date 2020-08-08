@@ -145,7 +145,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_WHITELIST = [
     'https://apirestshoop.herokuapp.com/servicios/productos/',
-    'https://apirestshoop.herokuapp.com/servicios/categorias/'
+    'https://apirestshoop.herokuapp.com/servicios/categorias/',
+    'http://localhost:3006'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
