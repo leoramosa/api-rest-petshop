@@ -168,7 +168,18 @@ class Categoria(models.Model):
     # idcategoria = models.AutoField(db_column='idCategoria', primary_key=True)  # Field name made lowercase.
     nombrecategoria = models.CharField(max_length=200, blank=True, null=True)
     # Field name made lowercase.
-    fotocategoria = models.ImageField(upload_to="productos", blank=True)
+    photo_category_product = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    fotocategoria = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    fotocategoria1 = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    fotocategoria2 = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    fotocategoria3 = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    fotocategoria4 = models.ImageField(
+        upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
     imagen = models.CharField(max_length=200, blank=True, null=True)
     activo = models.IntegerField()
@@ -244,6 +255,7 @@ class Producto(models.Model):
     # idprod = models.AutoField(db_column='idprod', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(max_length=200, blank=True, null=True)
     # Field name made lowercase.
+    fotoportadaactivo = models.IntegerField(blank=True, null=True)
     fotoportada = models.ImageField(upload_to="productos", blank=True)
     # Field name made lowercase.
     photoprincipal = models.ImageField(
@@ -261,15 +273,16 @@ class Producto(models.Model):
     fotosproducts4 = models.ImageField(
         upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
-    imagen = models.CharField(max_length=200, blank=True, null=True)
     # cantidad_stock = models.CharField(db_column='Cantidad_Stock', max_length=18, blank=True, null=True)  # Field name made lowercase.
     # Field name made lowercase.
     cantidadstock = models.CharField(
         db_column='CantidadStock', max_length=18, blank=True, null=True)
     # Field name made lowercase.
-    precioreal = models.IntegerField(
-        db_column='PrecioReal', blank=True, null=True)
+    precionormal = models.IntegerField(
+        db_column='PrecioNormal', blank=True, null=True)
     # Field name made lowercase.
+    preciointernet = models.IntegerField(
+        db_column='PrecioInternet', blank=True, null=True)
     preciopromocion = models.IntegerField(
         db_column='PrecioPromocion', blank=True, null=True)
     # Field name made lowercase.
@@ -279,11 +292,10 @@ class Producto(models.Model):
     brevedescripcion = models.CharField(
         db_column='breveDescripcion', max_length=200, blank=True, null=True)
     # Field name made lowercase.
-    prodoferta = models.IntegerField(
+    preciooferta = models.IntegerField(
         db_column='ProdOferta', blank=True, null=True)
     # Field name made lowercase.
-    fechacreacion = models.CharField(
-        db_column='FechaCreacion', max_length=18, blank=True, null=True)
+    fecha_creacion = models.DateTimeField(blank=True, null=True)
     # Field name made lowercase.
     idmodelo = models.ForeignKey(Modelo, on_delete=models.CASCADE,)
     # Field name made lowercase.
