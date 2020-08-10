@@ -272,6 +272,12 @@ class Producto(models.Model):
     # Field name made lowercase.
     fotosproducts4 = models.ImageField(
         upload_to="productos", blank=True, null=True)
+    fotosproducts5 = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    fotosproducts6 = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    fotosproducts7 = models.ImageField(
+        upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
     # cantidad_stock = models.CharField(db_column='Cantidad_Stock', max_length=18, blank=True, null=True)  # Field name made lowercase.
     # Field name made lowercase.
