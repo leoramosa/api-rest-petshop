@@ -247,8 +247,30 @@ class Color(models.Model):
     value = models.CharField(db_column='numvalue',
                              max_length=60, blank=True, null=True)
 
+
+class ImagenesColor(models.Model):
+    # Field name made lowercase.
+    Imagen_color = models.CharField(
+        db_column='nomColor', max_length=60, blank=True, null=True)
+    # Field name made lowercase.
+    Imagen_number_color = models.CharField(
+        db_column='numColor', max_length=60, blank=True, null=True)
+    # Field name made lowercase.
+    value = models.CharField(db_column='numvalue',
+                             max_length=60, blank=True, null=True)
+    Imagen_color_1 = models.ImageField(
+        upload_to="colorimagen", blank=True, null=True)
+    Imagen_color_2 = models.ImageField(
+        upload_to="colorimagen", blank=True, null=True)
+    Imagen_color_3 = models.ImageField(
+        upload_to="colorimagen", blank=True, null=True)
+    Imagen_color_4 = models.ImageField(
+        upload_to="colorimagen", blank=True, null=True)
+    Imagen_color_5 = models.ImageField(
+        upload_to="colorimagen", blank=True, null=True)
+
     def __str__(self):
-        return self.nomcolor
+        return self.Imagen_color
 
 
 class Producto(models.Model):
@@ -256,7 +278,8 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=200, blank=True, null=True)
     # Field name made lowercase.
     fotoportadaactivo = models.IntegerField(blank=True, null=True)
-    fotoportada = models.ImageField(upload_to="productos", blank=True)
+    fotoportada = models.ImageField(
+        upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
     photoprincipal = models.ImageField(
         upload_to="productos", blank=True, null=True)
@@ -306,6 +329,7 @@ class Producto(models.Model):
     idmodelo = models.ForeignKey(Modelo, on_delete=models.CASCADE,)
     # Field name made lowercase.
     idcolor = models.ManyToManyField(Color,)
+    imagenidcolor = models.ManyToManyField(ImagenesColor,)
     idtallaproducto = models.ManyToManyField(Talla,)
     # Field name made lowercase.
     idgenero = models.ForeignKey(Genero, on_delete=models.CASCADE,)
