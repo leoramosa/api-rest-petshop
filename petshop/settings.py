@@ -26,7 +26,7 @@ SECRET_KEY = '45*g4g76s)&2k$j6(#s&(&_%hu6h%10oqk#-^xeqez+kkr#5$o'
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['apirestshoop.herokuapp.com']
+ALLOWED_HOSTS = ['https://apirestshoop.herokuapp.com']
 
 
 # Application definition
@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'petshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ep250g3rv4qmi4dm',
-        'USER': 'af5smbcgncyxwr6r',
-        'PASSWORD': 'un3fico4bffxhl8j',
+        'NAME': 'l2rlxxok6d266pok',
+        'USER': 'oliaubwe6mrg8si5',
+        'PASSWORD': 'aehyefmospl8zsni',
         # Or an IP Address that your DB is hosted on
         'HOST': 'mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         'PORT': '3306',

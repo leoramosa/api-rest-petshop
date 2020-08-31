@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Carritocompras, Cliente, Color, Comentario, Foto, Genero, Marca, Modelo, Pago, Talla
 from .models import Historialconsulta, Tipopago, Tipoproducto, Usuario, Valoracion, Venta, VentaProducto
-from .models import Producto, Categoria
+from .models import Producto, Categoria, Imagenescolor
 
 admin.site.register(Carritocompras)
 admin.site.register(Cliente)
@@ -15,6 +15,7 @@ admin.site.register(Modelo)
 admin.site.register(Pago)
 admin.site.register(Producto)
 admin.site.register(Historialconsulta)
+admin.site.register(Imagenescolor)
 admin.site.register(Tipopago)
 admin.site.register(Tipoproducto)
 admin.site.register(Usuario)

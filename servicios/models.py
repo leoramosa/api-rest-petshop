@@ -55,7 +55,7 @@ class Talla(models.Model):
     # Field name made lowercase.
     value = models.CharField(db_column='numvalue',
                              max_length=60, blank=True, null=True)
-    #productotalla= models.ForeignKey(Producto, related_name='tallas', on_delete=models.CASCADE)
+    # productotalla= models.ForeignKey(Producto, related_name='tallas', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nomtalla
@@ -92,7 +92,7 @@ class Genero(models.Model):
 
     # Field name made lowercase.
     nomgenero = models.CharField(db_column='nomGenero', max_length=60)
-    #productogenero = models.ForeignKey(Producto, related_name='generos', on_delete=models.CASCADE)
+    # productogenero = models.ForeignKey(Producto, related_name='generos', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nomgenero
@@ -123,7 +123,7 @@ class Marca(models.Model):
 
     # Field name made lowercase.
     nommarca = models.CharField(db_column='nomMarca', max_length=60)
-    #productomarca = models.ForeignKey(Producto, related_name='marcas', on_delete=models.CASCADE)
+    # productomarca = models.ForeignKey(Producto, related_name='marcas', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nommarca
@@ -137,7 +137,7 @@ class Modelo(models.Model):
     # Field name made lowercase.
     descmodelo = models.CharField(
         db_column='descModelo', max_length=200, blank=True, null=True)
-    #productomodelo = models.ForeignKey(Producto, related_name='tipomodelo', on_delete=models.CASCADE)
+    # productomodelo = models.ForeignKey(Producto, related_name='tipomodelo', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nommodelo
@@ -211,7 +211,7 @@ class Usuario(models.Model):
     fechainscripcion = models.DateTimeField(
         db_column='fechaInscripcion', blank=True, null=True)
     estado = models.IntegerField(blank=True, null=True)
-    #productousuario = models.ForeignKey(Producto, related_name='usuarios', on_delete=models.CASCADE)
+    # productousuario = models.ForeignKey(Producto, related_name='usuarios', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nomusuario
@@ -226,7 +226,7 @@ class Tipoproducto(models.Model):
     # Field name made lowercase.
     nomtipoproducto = models.CharField(
         db_column='nomTipoProducto', max_length=60)
-    #productotipo = models.ForeignKey(Producto, related_name='tipoproducto', on_delete=models.CASCADE)
+    # productotipo = models.ForeignKey(Producto, related_name='tipoproducto', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nomtipoproducto
@@ -247,30 +247,41 @@ class Color(models.Model):
     value = models.CharField(db_column='numvalue',
                              max_length=60, blank=True, null=True)
 
+    def __str__(self):
+        return self.nomcolor
 
-class ImagenesColor(models.Model):
+    class Meta:
+        managed = True
+        db_table = 'color'
+
+
+class Imagenescolor(models.Model):
     # Field name made lowercase.
-    Imagen_color = models.CharField(
-        db_column='nomColor', max_length=60, blank=True, null=True)
+    imagencolor = models.CharField(
+        db_column='imgcolor', max_length=60, blank=True, null=True)
     # Field name made lowercase.
-    Imagen_number_color = models.CharField(
-        db_column='numColor', max_length=60, blank=True, null=True)
+    imagennumbercolor = models.CharField(
+        db_column='imgnumberColor', max_length=60, blank=True, null=True)
     # Field name made lowercase.
-    value = models.CharField(db_column='numvalue',
+    value = models.CharField(db_column='numvaluecolor',
                              max_length=60, blank=True, null=True)
-    Imagen_color_1 = models.ImageField(
+    imagencolor1 = models.ImageField(
         upload_to="colorimagen", blank=True, null=True)
-    Imagen_color_2 = models.ImageField(
+    imagencolor2 = models.ImageField(
         upload_to="colorimagen", blank=True, null=True)
-    Imagen_color_3 = models.ImageField(
+    imagencolor3 = models.ImageField(
         upload_to="colorimagen", blank=True, null=True)
-    Imagen_color_4 = models.ImageField(
+    imagencolor4 = models.ImageField(
         upload_to="colorimagen", blank=True, null=True)
-    Imagen_color_5 = models.ImageField(
+    imagencolor5 = models.ImageField(
         upload_to="colorimagen", blank=True, null=True)
 
     def __str__(self):
-        return self.Imagen_color
+        return self.imagencolor
+
+    class Meta:
+        managed = True
+        db_table = 'imagencolor'
 
 
 class Producto(models.Model):
@@ -328,8 +339,10 @@ class Producto(models.Model):
     # Field name made lowercase.
     idmodelo = models.ForeignKey(Modelo, on_delete=models.CASCADE,)
     # Field name made lowercase.
+    imagenidcolor = models.ManyToManyField(Imagenescolor,)
+    # Field name made lowercase.
     idcolor = models.ManyToManyField(Color,)
-    imagenidcolor = models.ManyToManyField(ImagenesColor,)
+    # Field name made lowercase.
     idtallaproducto = models.ManyToManyField(Talla,)
     # Field name made lowercase.
     idgenero = models.ForeignKey(Genero, on_delete=models.CASCADE,)
