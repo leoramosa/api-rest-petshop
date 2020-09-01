@@ -239,13 +239,13 @@ class Tipoproducto(models.Model):
 class Color(models.Model):
     # Field name made lowercase.
     nombrecolor = models.CharField(
-        db_column='nomcolor', max_length=60, blank=True, null=True)
+        db_column='nombreColor', max_length=60, blank=True, null=True)
     # Field name made lowercase.
     numbercolor = models.CharField(
-        db_column='imgnumberColor', max_length=60, blank=True, null=True)
+        db_column='numberColor', max_length=60, blank=True, null=True)
     # Field name made lowercase.
-    valuecolor = models.CharField(db_column='numvaluecolor',
-                                  max_length=60, blank=True, null=True)
+    valuecolor = models.CharField(
+        db_column='valuColor', max_length=60, blank=True, null=True)
     imagencolor1 = models.ImageField(
         upload_to="productos", blank=True, null=True)
     imagencolor2 = models.ImageField(
@@ -272,12 +272,13 @@ class Producto(models.Model):
     fotoportadaactivo = models.IntegerField(blank=True, null=True)
     fotoportada = models.ImageField(
         upload_to="productos", blank=True, null=True)
-    # Field name made lowercase.
+    fotoprincipal = models.ImageField(
+        upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
     # cantidad_stock = models.CharField(db_column='Cantidad_Stock', max_length=18, blank=True, null=True)  # Field name made lowercase.
     # Field name made lowercase.
-    stock = models.CharField(
-        db_column='CantidadStock', max_length=18, blank=True, null=True)
+    cantidadstock = models.CharField(
+        db_column='CantidadStock', max_length=100, blank=True, null=True)
     # Field name made lowercase.
     precionormal = models.IntegerField(
         db_column='PrecioNormal', blank=True, null=True)
@@ -287,14 +288,12 @@ class Producto(models.Model):
     preciopromocion = models.IntegerField(
         db_column='PrecioPromocion', blank=True, null=True)
     # Field name made lowercase.
-    descripcion = models.TextField(
-        db_column='Descripcion',  blank=True, null=True)
-    # Field name made lowercase.
-    brevedescripcion = models.TextField(
-        db_column='breveDescripcion',  blank=True, null=True)
-    # Field name made lowercase.
     preciooferta = models.IntegerField(
         db_column='ProdOferta', blank=True, null=True)
+    # Field name made lowercase.
+    descripcion = models.TextField(blank=True, null=True)
+    # Field name made lowercase.
+    brevedescripcion = models.TextField(blank=True, null=True)
     # Field name made lowercase.
     fecha_creacion = models.DateTimeField(blank=True, null=True)
     # Field name made lowercase.
@@ -315,10 +314,8 @@ class Producto(models.Model):
     idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='nombre')
     # Field name made lowercase.
-    mostrarpaginicio = models.IntegerField(
-        db_column='mostrarPagInicio', blank=True, null=True)
-    activo = models.IntegerField(
-        db_column='activopro', blank=True, null=True)
+    mostrarpaginicio = models.IntegerField(blank=True, null=True)
+    activo = models.IntegerField(blank=True, null=True)
     fecha_modificacion = models.DateTimeField(blank=True, null=True)
     state = models.BooleanField(default=True, blank=True, null=True)
 
