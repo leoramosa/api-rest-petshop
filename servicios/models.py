@@ -238,50 +238,31 @@ class Tipoproducto(models.Model):
 
 class Color(models.Model):
     # Field name made lowercase.
-    nomcolor = models.CharField(
-        db_column='nomColor', max_length=60, blank=True, null=True)
+    nombrecolor = models.CharField(
+        db_column='nomcolor', max_length=60, blank=True, null=True)
     # Field name made lowercase.
-    numcolor = models.CharField(
-        db_column='numColor', max_length=60, blank=True, null=True)
-    # Field name made lowercase.
-    value = models.CharField(db_column='numvalue',
-                             max_length=60, blank=True, null=True)
-
-    def __str__(self):
-        return self.nomcolor
-
-    class Meta:
-        managed = True
-        db_table = 'color'
-
-
-class Imagenescolor(models.Model):
-    # Field name made lowercase.
-    imagencolor = models.CharField(
-        db_column='imgcolor', max_length=60, blank=True, null=True)
-    # Field name made lowercase.
-    imagennumbercolor = models.CharField(
+    numbercolor = models.CharField(
         db_column='imgnumberColor', max_length=60, blank=True, null=True)
     # Field name made lowercase.
-    value = models.CharField(db_column='numvaluecolor',
-                             max_length=60, blank=True, null=True)
+    valuecolor = models.CharField(db_column='numvaluecolor',
+                                  max_length=60, blank=True, null=True)
     imagencolor1 = models.ImageField(
-        upload_to="colorimagen", blank=True, null=True)
+        upload_to="productos", blank=True, null=True)
     imagencolor2 = models.ImageField(
-        upload_to="colorimagen", blank=True, null=True)
+        upload_to="productos", blank=True, null=True)
     imagencolor3 = models.ImageField(
-        upload_to="colorimagen", blank=True, null=True)
+        upload_to="productos", blank=True, null=True)
     imagencolor4 = models.ImageField(
-        upload_to="colorimagen", blank=True, null=True)
+        upload_to="productos", blank=True, null=True)
     imagencolor5 = models.ImageField(
-        upload_to="colorimagen", blank=True, null=True)
+        upload_to="productos", blank=True, null=True)
 
     def __str__(self):
-        return self.imagencolor
+        return self.nombrecolor
 
     class Meta:
         managed = True
-        db_table = 'imagencolor'
+        db_table = 'nombrecolor'
 
 
 class Producto(models.Model):
@@ -292,30 +273,10 @@ class Producto(models.Model):
     fotoportada = models.ImageField(
         upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
-    photoprincipal = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    # Field name made lowercase.
-    fotosproducts1 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    # Field name made lowercase.
-    fotosproducts2 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    # Field name made lowercase.
-    fotosproducts3 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    # Field name made lowercase.
-    fotosproducts4 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    fotosproducts5 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    fotosproducts6 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    fotosproducts7 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
     # cantidad_stock = models.CharField(db_column='Cantidad_Stock', max_length=18, blank=True, null=True)  # Field name made lowercase.
     # Field name made lowercase.
-    cantidadstock = models.CharField(
+    stock = models.CharField(
         db_column='CantidadStock', max_length=18, blank=True, null=True)
     # Field name made lowercase.
     precionormal = models.IntegerField(
@@ -326,11 +287,11 @@ class Producto(models.Model):
     preciopromocion = models.IntegerField(
         db_column='PrecioPromocion', blank=True, null=True)
     # Field name made lowercase.
-    descripcion = models.CharField(
-        db_column='Descripcion', max_length=200, blank=True, null=True)
+    descripcion = models.TextField(
+        db_column='Descripcion',  blank=True, null=True)
     # Field name made lowercase.
-    brevedescripcion = models.CharField(
-        db_column='breveDescripcion', max_length=200, blank=True, null=True)
+    brevedescripcion = models.TextField(
+        db_column='breveDescripcion',  blank=True, null=True)
     # Field name made lowercase.
     preciooferta = models.IntegerField(
         db_column='ProdOferta', blank=True, null=True)
@@ -338,8 +299,6 @@ class Producto(models.Model):
     fecha_creacion = models.DateTimeField(blank=True, null=True)
     # Field name made lowercase.
     idmodelo = models.ForeignKey(Modelo, on_delete=models.CASCADE,)
-    # Field name made lowercase.
-    imagenidcolor = models.ManyToManyField(Imagenescolor,)
     # Field name made lowercase.
     idcolor = models.ManyToManyField(Color,)
     # Field name made lowercase.
@@ -356,9 +315,12 @@ class Producto(models.Model):
     idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='nombre')
     # Field name made lowercase.
-    mostrarpaginicio = models.IntegerField(db_column='mostrarPagInicio')
-    activo = models.IntegerField()
+    mostrarpaginicio = models.IntegerField(
+        db_column='mostrarPagInicio', blank=True, null=True)
+    activo = models.IntegerField(
+        db_column='activopro', blank=True, null=True)
     fecha_modificacion = models.DateTimeField(blank=True, null=True)
+    state = models.BooleanField(default=True, blank=True, null=True)
 
     class Meta:
         managed = True
