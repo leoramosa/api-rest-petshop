@@ -26,7 +26,7 @@ SECRET_KEY = '45*g4g76s)&2k$j6(#s&(&_%hu6h%10oqk#-^xeqez+kkr#5$o'
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['apirestshoop.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
