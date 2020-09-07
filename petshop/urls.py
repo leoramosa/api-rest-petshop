@@ -20,7 +20,11 @@ from django.conf.urls import url, include
 # para que carguen las iamgenes se tiene que incluir esto dos
 from petshop import settings
 from django.conf.urls.static import static
+from servicios import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('servicios/', include('servicios.urls'))
+    url('servicios/', include('servicios.urls')),
+    path('servicios/categorias_name/<int:id>',
+         views.ProductByCategoryList.as_view())
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
