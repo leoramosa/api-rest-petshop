@@ -15,7 +15,7 @@ urlpatterns = [
     url('servicios/', include('servicios.urls')),
     path('servicios/categorias_name/<int:id>',
          views.ProductByCategoryList.as_view()),
-    path('servicios/productos', views.ProductoView.as_view()),
+
     path('api/register/', views.RegisterAPI.as_view(), name='register'),
     path('api/login/', views.LoginAPI.as_view(), name='login'),
     path('api/logout/', knox_views.LogoutView.as_view(), name='logout'),

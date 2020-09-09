@@ -16,7 +16,7 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 
 
-class ProductoView(generics.ListAPIView):
+class ProductoView(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductosSerializer
     filter_backends = [DjangoFilterBackend]
