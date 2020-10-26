@@ -168,6 +168,7 @@ class Categoria(models.Model):
     # idcategoria = models.AutoField(db_column='idCategoria', primary_key=True)  # Field name made lowercase.
     nombrecategoria = models.CharField(max_length=200, blank=True, null=True)
     # Field name made lowercase.
+
     photo_category_product = models.ImageField(
         upload_to="productos", blank=True, null=True)
     fotocategoria = models.ImageField(
@@ -184,6 +185,8 @@ class Categoria(models.Model):
     imagen = models.CharField(max_length=200, blank=True, null=True)
     activo = models.IntegerField()
     fecha_modificacion = models.DateTimeField(blank=True, null=True)
+    iconcategory = models.ImageField(
+        upload_to="productos", blank=True, null=True)
 
     def __str__(self):
         return self.nombrecategoria
