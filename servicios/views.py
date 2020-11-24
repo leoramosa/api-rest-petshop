@@ -38,11 +38,11 @@ class CityView(viewsets.ModelViewSet):
 
 class ProvinceView(viewsets.ModelViewSet):
     queryset = Province.objects.all()
-    serializer_class = CitySerializer
+    serializer_class = ProvinceSerializer
 
 class DistrictView(viewsets.ModelViewSet):
     queryset = District.objects.all()
-    serializer_class = CitySerializer
+    serializer_class = DistrictSerializer
 
 class ProductByCategoryList(generics.ListAPIView):
 
