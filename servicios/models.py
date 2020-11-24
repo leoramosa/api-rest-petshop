@@ -156,7 +156,7 @@ class City(models.Model):
 class Province(models.Model):
 
     name = models.CharField(max_length=60,  blank=True, null=True)
-    idcity = models.ForeignKey(City, on_delete=models.CASCADE )
+    idcity = models.ForeignKey(City, on_delete=models.CASCADE, )
     delivery = models.CharField(max_length=200, blank=True, null=True)
     costo = models.IntegerField(blank=True, null=True)
     statedisponible = models.BooleanField(default=True, blank=True, null=True)
@@ -168,7 +168,7 @@ class Province(models.Model):
 class District(models.Model):
 
     name = models.CharField(max_length=60,  blank=True, null=True)
-    idprovince = models.ForeignKey(Province, on_delete=models.CASCADE )
+    idprovince = models.ForeignKey(Province, on_delete=models.CASCADE, )
     delivery = models.CharField(max_length=200, blank=True, null=True)
     costo = models.IntegerField(blank=True, null=True)
     statedisponible = models.BooleanField(default=True, blank=True, null=True)
