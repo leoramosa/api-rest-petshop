@@ -41,19 +41,17 @@ class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
         fields = "__all__"
-        depth = 1
+
 
 class ProvinceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Province
-        fields = ['id', 'name', 'idcity']
-        depth = 1
+        fields = "__all__"
 
 class DistrictSerializer(serializers.ModelSerializer):
     class Meta:
         model = District
         fields = "__all__"
-        depth = 1
 
 
 class ColorSerializer(serializers.ModelSerializer):
