@@ -134,13 +134,48 @@ class Modelo(models.Model):
     # Field name made lowercase.
     nommodelo = models.CharField(
         db_column='nomModelo', max_length=60,  blank=True, null=True)
-    # Field name made lowercase.
     descmodelo = models.CharField(
         db_column='descModelo', max_length=200, blank=True, null=True)
+    
     # productomodelo = models.ForeignKey(Producto, related_name='tipomodelo', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nommodelo
+
+
+class City(models.Model):
+
+    name = models.CharField(max_length=60,  blank=True, null=True)
+    delivery = models.CharField(max_length=200, blank=True, null=True)
+    costo = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Province(models.Model):
+
+    name = models.CharField(max_length=60,  blank=True, null=True)
+    idcity = models.ForeignKey(City, on_delete=models.CASCADE )
+    delivery = models.CharField(max_length=200, blank=True, null=True)
+    costo = models.IntegerField(blank=True, null=True)
+    statedisponible = models.BooleanField(default=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+class District(models.Model):
+
+    name = models.CharField(max_length=60,  blank=True, null=True)
+    idprovince = models.ForeignKey(Province, on_delete=models.CASCADE )
+    delivery = models.CharField(max_length=200, blank=True, null=True)
+    costo = models.IntegerField(blank=True, null=True)
+    statedisponible = models.BooleanField(default=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+    
 
 
 class Pago(models.Model):
