@@ -146,7 +146,7 @@ class Modelo(models.Model):
 class City(models.Model):
 
     name = models.CharField(max_length=60,  blank=True, null=True)
-    delivery = models.CharField(max_length=200, blank=True, null=True)
+    delivery = models.BooleanField(default=True, blank=True, null=True)
     costo = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
@@ -157,9 +157,9 @@ class Province(models.Model):
 
     name = models.CharField(max_length=60,  blank=True, null=True)
     idcity = models.ForeignKey(City, on_delete=models.CASCADE, )
-    delivery = models.CharField(max_length=200, blank=True, null=True)
+    delivery = models.BooleanField(default=True, blank=True, null=True)
     costo = models.IntegerField(blank=True, null=True)
-    statedisponible = models.BooleanField(default=True, blank=True, null=True)
+    tienda = models.BooleanField(default=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -169,9 +169,9 @@ class District(models.Model):
 
     name = models.CharField(max_length=60,  blank=True, null=True)
     idprovince = models.ForeignKey(Province, on_delete=models.CASCADE, )
-    delivery = models.CharField(max_length=200, blank=True, null=True)
+    delivery = models.BooleanField(default=True, blank=True, null=True)
     costo = models.IntegerField(blank=True, null=True)
-    statedisponible = models.BooleanField(default=True, blank=True, null=True)
+    tienda = models.BooleanField(default=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
