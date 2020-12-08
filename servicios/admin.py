@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Carritocompras, Cliente, Color, Comentario, Foto, Genero, Marca, Modelo, Pago, Talla
 from .models import Historialconsulta, Tipopago, Tipoproducto, Usuario, Valoracion, Venta, VentaProducto
-from .models import Producto, Categoria, City, Province, District
+from .models import Producto, Categoria, City, Province, District, Imagencolor
 
 admin.site.register(Carritocompras)
 admin.site.register(Cliente)
@@ -25,6 +25,7 @@ admin.site.register(Categoria)
 admin.site.register(City)
 admin.site.register(Province)
 admin.site.register(District)
+admin.site.register(Imagencolor)
 
 
 # Register your models here.

@@ -29,7 +29,7 @@ class ProductosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = "__all__"
-        depth = 1
+        depth = 2
 
 
 class CategoriasSerializer(serializers.ModelSerializer):
@@ -58,3 +58,4 @@ class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
         fields = "__all__"
+        depth = 1

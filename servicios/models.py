@@ -273,6 +273,13 @@ class Tipoproducto(models.Model):
         managed = True
         db_table = 'tipoproducto'
 
+class Imagencolor(models.Model):
+    name = models.CharField( max_length=60, blank=True, null=True)
+    imagen = models.ImageField(upload_to="productos", blank=True, null=True)
+    state = models.BooleanField(default=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 class Color(models.Model):
     # Field name made lowercase.
@@ -284,16 +291,8 @@ class Color(models.Model):
     # Field name made lowercase.
     valuecolor = models.CharField(
         db_column='valuColor', max_length=60, blank=True, null=True)
-    imagencolor1 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    imagencolor2 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    imagencolor3 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    imagencolor4 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
-    imagencolor5 = models.ImageField(
-        upload_to="productos", blank=True, null=True)
+    state = models.BooleanField(default=True, blank=True, null=True)
+    idimagencolor = models.ManyToManyField(Imagencolor,)
 
     def __str__(self):
         return self.nombrecolor
