@@ -26,12 +26,31 @@ SECRET_KEY = '45*g4g76s)&2k$j6(#s&(&_%hu6h%10oqk#-^xeqez+kkr#5$o'
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['apirestshoop.herokuapp.com']
+ALLOWED_HOSTS = []
 
+
+JAZZMIN_SETTINGS = {
+    # title of the window
+    'site_title': 'Tangy Pawty',
+    'site_header': 'Tangy Pawty',
+    'site_logo': 'media/favicon.png',
+    'welcome_sign': 'Bienvenido a Tangy Pawty',
+    'copyright': 'Leonardo Ramos',
+    'search_model': 'auth.User',
+    'user_avatar': 'avatar',
+    'navigation_expanded': True,
+    'icons': {
+        'auth': 'fas fa-users-cog',
+        'auth.user': 'fas fa-user',
+        'auth.Group': 'fas fa-users',
+    },
+    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs", },
+}
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
