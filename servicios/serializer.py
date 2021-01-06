@@ -42,6 +42,7 @@ class PortadasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portada
         fields = "__all__"
+        depth = 1
 
 
 class CitySerializer(serializers.ModelSerializer):
