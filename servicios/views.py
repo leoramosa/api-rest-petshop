@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.core import serializers
 from django.http import HttpResponse
-from .models import Producto, Categoria, Color, City, Province, District
-from .serializer import ProductosSerializer, CategoriasSerializer, ColorSerializer, UserSerializer, RegisterSerializer, CitySerializer, ProvinceSerializer, DistrictSerializer
+from .models import Producto, Categoria, Color, City, Province, District, Portada
+from .serializer import ProductosSerializer, CategoriasSerializer, ColorSerializer, UserSerializer, RegisterSerializer, CitySerializer, ProvinceSerializer, DistrictSerializer, PortadasSerializer
 from rest_framework import generics, permissions, viewsets
 from rest_framework.response import Response
 # para registar un numero usuario
@@ -27,22 +27,33 @@ class CategoriaView(viewsets.ModelViewSet):
     serializer_class = CategoriasSerializer
     filter_backends = [DjangoFilterBackend]
 
+
+class PortadaView(viewsets.ModelViewSet):
+    queryset = Portada.objects.all()
+    serializer_class = PortadasSerializer
+    filter_backends = [DjangoFilterBackend]
+
+
 class ColorView(viewsets.ModelViewSet):
     queryset = Color.objects.all()
     serializer_class = ColorSerializer
     filter_backends = [DjangoFilterBackend]
 
+
 class CityView(viewsets.ModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerializer
+
 
 class ProvinceView(viewsets.ModelViewSet):
     queryset = Province.objects.all()
     serializer_class = ProvinceSerializer
 
+
 class DistrictView(viewsets.ModelViewSet):
     queryset = District.objects.all()
     serializer_class = DistrictSerializer
+
 
 class ProductByCategoryList(generics.ListAPIView):
 

@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'petshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rhky1dkgu3y2iu5n',
-        'USER': 'lkqn882bkv4einq9',
-        'PASSWORD': 'wtkdmg0z8o3rfq6z',
+        'NAME': 'q1bh3fbwqsplyl41',
+        'USER': 'l09upwcfc5umq0ke',
+        'PASSWORD': 'xhasf8viu8g1os4q',
         # Or an IP Address that your DB is hosted on
-        'HOST': 'mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'HOST': 'jhdjjtqo9w5bzq2t.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_ALL_TABLES'",

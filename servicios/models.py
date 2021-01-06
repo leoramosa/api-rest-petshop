@@ -46,21 +46,6 @@ class Cliente(models.Model):
         return self.nomcliente
 
 
-class Talla(models.Model):
-
-    nomtalla = models.CharField(
-        db_column='nomTalla', max_length=60, blank=True, null=True)
-    # Field name made lowercase.
-    numtalla = models.IntegerField(db_column='NumTalla', blank=True, null=True)
-    # Field name made lowercase.
-    value = models.CharField(db_column='numvalue',
-                             max_length=60, blank=True, null=True)
-    # productotalla= models.ForeignKey(Producto, related_name='tallas', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nomtalla
-
-
 class Comentario(models.Model):
     # Field name made lowercase.
     idcomentario = models.IntegerField(
@@ -136,7 +121,7 @@ class Modelo(models.Model):
         db_column='nomModelo', max_length=60,  blank=True, null=True)
     descmodelo = models.CharField(
         db_column='descModelo', max_length=200, blank=True, null=True)
-    
+
     # productomodelo = models.ForeignKey(Producto, related_name='tipomodelo', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -175,7 +160,6 @@ class District(models.Model):
 
     def __str__(self):
         return self.name
-    
 
 
 class Pago(models.Model):
@@ -197,6 +181,20 @@ class Pago(models.Model):
     class Meta:
         managed = True
         db_table = 'pago'
+
+# class Talla(models.Model):
+
+#    nomtalla = models.CharField(
+#        db_column='nomTalla', max_length=60, blank=True, null=True)
+    # Field name made lowercase.
+#    numtalla = models.IntegerField(db_column='NumTalla', blank=True, null=True)
+    # Field name made lowercase.
+#    value = models.CharField(db_column='numvalue',
+#                             max_length=60, blank=True, null=True)
+    # productotalla= models.ForeignKey(Producto, related_name='tallas', on_delete=models.CASCADE)
+
+#    def __str__(self):
+#        return self.nomtalla
 
 
 class Categoria(models.Model):
@@ -273,25 +271,24 @@ class Tipoproducto(models.Model):
         managed = True
         db_table = 'tipoproducto'
 
+
 class Imagencolor(models.Model):
-    name = models.CharField( max_length=60, blank=True, null=True)
+    name = models.CharField(max_length=60, blank=True, null=True)
     imagen = models.ImageField(upload_to="productos", blank=True, null=True)
     state = models.BooleanField(default=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
 
+
 class Color(models.Model):
     # Field name made lowercase.
-    nombrecolor = models.CharField(
-        db_column='nombreColor', max_length=60, blank=True, null=True)
+    nombrecolor = models.CharField(max_length=60, blank=True, null=True)
     # Field name made lowercase.
-    numbercolor = models.CharField(
-        db_column='numberColor', max_length=60, blank=True, null=True)
+    numbercolor = models.CharField(max_length=60, blank=True, null=True)
     # Field name made lowercase.
-    valuecolor = models.CharField(
-        db_column='valuColor', max_length=60, blank=True, null=True)
-    state = models.BooleanField(default=True, blank=True, null=True)
+    valuecolor = models.CharField(max_length=60, blank=True, null=True)
+    estado = models.BooleanField(default=True, blank=True, null=True)
     idimagencolor = models.ManyToManyField(Imagencolor,)
 
     def __str__(self):
@@ -302,13 +299,23 @@ class Color(models.Model):
         db_table = 'nombrecolor'
 
 
+class Talla(models.Model):
+
+    tallaproducto = models.CharField(max_length=60, blank=True, null=True)
+    nomtalla = models.CharField(max_length=60, blank=True, null=True)
+    # Field name made lowercase.
+    cantidad = models.IntegerField(db_column='NumTalla', blank=True, null=True)
+    EstadoTalla = models.BooleanField(default=True, blank=True, null=True)
+    colorproducto = models.ForeignKey(Color, on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.tallaproducto
+
+
 class Producto(models.Model):
     # idprod = models.AutoField(db_column='idprod', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(max_length=200, blank=True, null=True)
     # Field name made lowercase.
-    fotoportadaactivo = models.IntegerField(blank=True, null=True)
-    fotoportada = models.ImageField(
-        upload_to="productos", blank=True, null=True)
     fotoprincipal = models.ImageField(
         upload_to="productos", blank=True, null=True)
     # Field name made lowercase.
@@ -334,31 +341,32 @@ class Producto(models.Model):
     # Field name made lowercase.
     fecha_creacion = models.DateTimeField(blank=True, null=True)
     # Field name made lowercase.
-    idmodelo = models.ForeignKey(Modelo, on_delete=models.CASCADE,)
-    # Field name made lowercase.
     idcolor = models.ManyToManyField(Color,)
     # Field name made lowercase.
     idtallaproducto = models.ManyToManyField(Talla,)
     # Field name made lowercase.
-    idgenero = models.ForeignKey(Genero, on_delete=models.CASCADE,)
-    # Field name made lowercase.
-    idmarca = models.ForeignKey(Marca, on_delete=models.CASCADE, )
-    # Field name made lowercase.
     idcategoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, )
-    # Field name made lowercase.
-    idtipoproducto = models.ForeignKey(Tipoproducto, on_delete=models.CASCADE)
-    # Field name made lowercase.
-    idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='nombre')
-    # Field name made lowercase.
-    mostrarpaginicio = models.IntegerField(blank=True, null=True)
-    activo = models.IntegerField(blank=True, null=True)
     fecha_modificacion = models.DateTimeField(blank=True, null=True)
     state = models.BooleanField(default=True, blank=True, null=True)
+    stateportada = models.BooleanField(default=False, blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'producto'
+
+    def __str__(self):
+        return self.nombre
+
+
+class Portada(models.Model):
+
+    nombre = models.CharField(max_length=60, blank=True, null=True)
+    # Field name made lowercase.
+    fotoportada = models.ImageField(
+        upload_to="productos", blank=True, null=True)
+    estadoportada = models.BooleanField(default=True, blank=True, null=True)
+    portadaproducto = models.ManyToManyField(Producto,)
 
     def __str__(self):
         return self.nombre

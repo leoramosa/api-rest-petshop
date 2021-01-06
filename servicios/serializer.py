@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Producto, Categoria, Color, City, Province, District
+from .models import Producto, Categoria, Color, City, Province, District, Portada
 from django.contrib.auth.models import User
 # User Serializer
 
@@ -37,6 +37,13 @@ class CategoriasSerializer(serializers.ModelSerializer):
         model = Categoria
         fields = "__all__"
 
+
+class PortadasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Portada
+        fields = "__all__"
+
+
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
@@ -47,6 +54,7 @@ class ProvinceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Province
         fields = "__all__"
+
 
 class DistrictSerializer(serializers.ModelSerializer):
     class Meta:
